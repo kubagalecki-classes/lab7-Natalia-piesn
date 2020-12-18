@@ -12,6 +12,7 @@ int main()
     try {
         vector< long int > numbers;
         numbers.assign(a, 0);
+        cout << b << endl;
         variant< int, std::string > v;
         if (b % 2 == 0) {
             v = 42;
@@ -21,6 +22,10 @@ int main()
         }
         cout << get< int >(v) << endl;
     }
+    catch (const exception& e) {
+        cout << e.what() << endl;
+    }
+    /*
     catch (const bad_alloc& e) {
         cout << e.what() << " alloc" << endl;
     }
@@ -30,4 +35,5 @@ int main()
     catch (...) {
         cout << "Default exception." << endl;
     }
+    */
 }
