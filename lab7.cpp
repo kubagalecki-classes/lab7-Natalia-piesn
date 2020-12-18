@@ -28,6 +28,7 @@ int main()
     catch (const MyException& e) {
         cout << e.what() << endl;
     }
+    
     /*
     catch (const bad_alloc& e) {
         cout << e.what() << " alloc" << endl;
