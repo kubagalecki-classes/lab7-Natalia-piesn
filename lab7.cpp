@@ -5,24 +5,27 @@
 
 using namespace std;
 
+struct MyException : public exception
+{
+    const char* what() const throw() { return "0"; }
+};
+
+double divide(const int& a, const int& b)
+{
+    if (b == 0) {
+        throw MyException();
+    }
+    return a / b;
+}
+
 int main()
 {
-    long int a, b;
+    int a, b;
     cin >> a >> b;
     try {
-        vector< long int > numbers;
-        numbers.assign(a, 0);
-        cout << b << endl;
-        variant< int, std::string > v;
-        if (b % 2 == 0) {
-            v = 42;
-        }
-        else {
-            v = "odd";
-        }
-        cout << get< int >(v) << endl;
+        cout << divide(a, b) << endl;
     }
-    catch (const exception& e) {
+    catch (const MyException& e) {
         cout << e.what() << endl;
     }
     /*
